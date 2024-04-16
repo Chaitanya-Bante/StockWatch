@@ -134,7 +134,7 @@ nav span {
 }
 
 .fl-table td {
-    /* border-right: 1px solid black; */
+    border-right: 1px solid var(--black_L);
     font-size: 24px;
 }
 
@@ -160,7 +160,7 @@ nav span {
         display: block;
         text-align: right;
         font-size: 11px;
-        color: white;
+        color: var(--black_L);
         padding: 0 0 10px;
     }
     .fl-table thead, .fl-table tbody, .fl-table thead th {
@@ -190,7 +190,7 @@ nav span {
     }
     .fl-table thead th {
         text-align: left;
-        border-bottom: 1px solid #f7f7f9;
+        border-bottom: 1px solid var(--black_L);
     }
     .fl-table tbody tr {
         display: table-cell;
@@ -202,11 +202,11 @@ nav span {
         background: transparent;
     }
     .fl-table tr td:nth-child(odd) {
-        background: #F8F8F8;
-        border-right: 1px solid #E6E4E4;
+        background: var(--black_D);
+        border-right: 1px solid var(--black_L);
     }
     .fl-table tr td:nth-child(even) {
-        border-right: 1px solid #E6E4E4;
+        border-right: 1px solid var(--black_D);
     }
     .fl-table tbody td {
         display: block;
