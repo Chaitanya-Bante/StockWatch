@@ -15,8 +15,8 @@ body {
 
 body p {
     display: block;
-    width: calc(100% - 80px);
-    margin: 10px 40px;
+    width: calc(100% - 240px);
+    margin: 10px auto;
     padding: 20px 0;
     background-color: var(--black_L);
     color: var(--white_D);
@@ -28,9 +28,10 @@ body p {
 
 nav {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    width: calc(100% - 40px);
-    padding: 10px 20px;
+    width: calc(100% - 0);
+    padding: 16px 60px;
     color: var(--white_D);
 }
 
@@ -53,39 +54,50 @@ nav span {
 }
 
 #screen {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    margin: 10px 20px;
-    padding: 10px 20px;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+    margin: 20px 60px;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
-    padding: 20px 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 20px 40px;
     background-color: var(--black_L);
     border-radius: 16px;
 }
 
-.stockName {
-    color: var(--white_D);
-    font-size: 18px;
+.stock-name {
+    color: var(--white_L);
+    font-size: 32px;
     letter-spacing: 0.4px;
     font-weight: 500;
 }
 
-.stockChange {
-    color: aquamarine;
-    font-size: 48px;
-    font-weight: lighter;
+.stock-price {
+    color: var(--white_L);
+}
+
+.stock-price, .stock-change, .stock-percent-change {
+    font-size: 32px;
+    font-weight: 100;
+}
+
+.redText {
+    color: rgb(229,141,147);
+}
+
+.greenText {
+    color: rgb(143,199,162);
 }
 
 #reloadBtn {
     display: block;
-    width: calc(100% - 80px);
-    margin: 10px 40px;
+    width: calc(100% - 120px);
+    margin: 20px 60px;
     padding: 10px 0;
     background-color: var(--yellow_L);
     color: var(--black_D);
@@ -96,3 +108,129 @@ nav span {
     text-decoration: none;
     border-radius: 8px;
 }
+
+.table-wrapper{
+    margin: 10px 60px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border: 1px solid var(--black_L);
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: normal;
+    /* border: none; */
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: var(--black_L);
+    color: var(--white_M);
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 16px;
+}
+
+.fl-table td {
+    /* border-right: 1px solid black; */
+    font-size: 24px;
+}
+
+.fl-table thead th {
+    background: var(--yellow_L);
+    color: var(--black_D);
+    font-weight: 800;
+}
+
+.fl-table tr:nth-child(even) {
+    background: var(--black_D);
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+/* #indicesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin: 40px;
+}
+
+#indicesContainer .indices {
+    padding: 20px 20px;
+    background-color: var(--black_L);
+    border-radius: 10px;
+}
+
+#indicesContainer .indices a {
+    padding: 6px 10px;
+    font-size: 28px;
+    color: var(--white_L);
+    border-left: 4px solid var(--yellow_D);
+    text-decoration: none;
+} */

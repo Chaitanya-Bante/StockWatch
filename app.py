@@ -1,35 +1,41 @@
 from flask import Flask, render_template, request, redirect
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import requests
 
 app = Flask(__name__)
 
 @app.route('/')
 def Welcome():
-    url = "https://www.google.com/finance/?hl=en"
+    url = "https://www.moneycontrol.com/markets/indian-indices/"
     response = requests.get(url)
-    soup = bs(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, 'html.parser')
 
-    stock_names_div = soup.find_all('div', {'class':'TwnKPb'})
-    stock_change_div = soup.find_all('div', {'class':'JwB6zf'})
+    data = soup.find_all('table', {'class':'tbl_indices'})
 
-    stock_names = []
-    stock_change = []
+    stock_info = []
 
-    for i in range(len(stock_names_div)):
-        stock_names.append(stock_names_div[i].string)
-        stock_change.append(stock_change_div[i].string)
+    for tables in data[0:5]:
+        rows = tables.find_all('tr')
+        for row in rows:
+            tds = row.find_all('td')
+            if len(tds) <= 1:
+                continue
+            else:
+                Name = tds[0].string
+                Price = tds[2].string
+                Change = tds[3].string
+                percentChange = tds[4].string
+                
+                if float(percentChange) < 0.0:
+                    color = 'redText'
+                else:
+                    color = 'greenText'
 
-    stock_info = merge_lists(stock_names, stock_change)
-    
+                stock_info.append([Name, Price, Change, percentChange, color])
+
     return render_template('index.html', stock_info = stock_info)
 
-def merge_lists(list1, list2):
-        merged_list = []
-        min_length = min(len(list1), len(list2))
-        for i in range(min_length):
-            merged_list.append([list1[i], list2[i]])
-        return merged_list
+
 
 if __name__ == '__main__':
     app.run(debug=True)

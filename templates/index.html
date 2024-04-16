@@ -14,15 +14,43 @@
     <h1 id="heading">
         StockWatch
     </h1>
-    <p>Values are updated every 15 min.</p>
+    <p>Values are updated every 15 sec.</p>
     <div id="screen">
-        {% for stock in stock_info %}
+        <!-- {% for stock in stock_info %}
         <div class="container">
-            <div class="stockName">{{ stock[0] }}</div>
-            <span class="stockChange">{{ stock[1] }}</span>
+            <div class="stock-name">{{ stock[0] }}</div>
+            <span class="stock-price">{{ stock[1] }}</span>
+            <span class="stock-change {{ stock[4] }}">{{ stock[2] }}</span>
+            <span class="stock-percent-change {{ stock[4] }}">{{ stock[3] }}</span>
         </div>
-        {% endfor %}
+        {% endfor %} -->
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>LTP</th>
+                    <th>Chg</th>
+                    <th>%Chg</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for stock in stock_info %}
+                <tr>
+                    <td>{{ stock[0] }}</td>
+                    <td>{{ stock[1] }}</td>
+                    <td class="{{ stock[4] }}">{{ stock[2] }}</td>
+                    <td class="{{ stock[4] }}">{{ stock[3] }}</td>
+                </tr>
+                {% endfor %}
+                <tbody>
+            </table>
     </div>
     <a id="reloadBtn" href="/">Reload</a>
+    <!-- <section id="indicesContainer">
+        <div class="indices"><a href="/large_cap">NIFTY Large Cap</a></div>
+        <div class="indices"><a href="/mid_cap">NIFTY Mid Cap</a></div>
+        <div class="indices"><a href="/small_cap">NIFTY Small Cap</a></div>
+    </section> -->
 </body>
 </html>
