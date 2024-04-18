@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from bs4 import BeautifulSoup
 import requests
+import random
 
 app = Flask(__name__)
 
@@ -33,7 +34,9 @@ def Welcome():
 
                 stock_info.append([Name, Price, Change, percentChange, color])
 
-    return render_template('index.html', stock_info = stock_info)
+    # random.shuffle(stock_info)
+
+    return render_template('index.html', stock_info = sorted(stock_info))
 
 
 

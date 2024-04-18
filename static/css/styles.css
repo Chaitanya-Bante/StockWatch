@@ -6,24 +6,37 @@
     --white_D: #EAECEF;
     --white_M: #FAFAFA;
     --white_L: #FFFFFF;
+
+    /* Another color scheme */
+
+    /* --black_D: #F5F5F5;
+    --black_L: #FFFFFF;
+    --yellow_D: #333333;
+    --yellow_L: #FCD535;
+    --white_D: #333333;
+    --white_M: #333333;
+    --white_L: #333333; */
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: var(--black_D);
     font-family: 'graphik-regular', Helvetica, Arial, sans-serif;
 }
 
 body p {
     display: block;
-    width: calc(100% - 240px);
+    width: 80vw;
     margin: 10px auto;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: var(--black_L);
     color: var(--white_D);
     text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 16px;
+    font-size: 2vw;
+    font-weight: 600;
+    border-radius: 8px;
 }
 
 nav {
@@ -47,9 +60,9 @@ nav span {
 }
 
 #heading {
-    font-size: 4em;
+    font-size: 8vw;
     text-align: center;
-    margin: 1em auto;
+    margin: 0.5em auto;
     color: var(--white_L);
 }
 
@@ -57,7 +70,8 @@ nav span {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly; 
-    margin: 20px 60px;
+    align-items: center;
+    /* margin: 20px; */
 }
 
 .container {
@@ -96,8 +110,8 @@ nav span {
 
 #reloadBtn {
     display: block;
-    width: calc(100% - 120px);
-    margin: 20px 60px;
+    width: 80vw;
+    margin: 20px 0;
     padding: 10px 0;
     background-color: var(--yellow_L);
     color: var(--black_D);
@@ -110,7 +124,10 @@ nav span {
 }
 
 .table-wrapper{
-    margin: 10px 60px;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 40px 0;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
 }
 
@@ -121,8 +138,8 @@ nav span {
     font-weight: normal;
     /* border: none; */
     border-collapse: collapse;
-    width: 100%;
-    max-width: 100%;
+    width: 80%;
+    max-width: 80%;
     white-space: nowrap;
     background-color: var(--black_L);
     color: var(--white_M);
@@ -151,18 +168,28 @@ nav span {
 /* Responsive */
 
 @media (max-width: 767px) {
+
+    nav {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    nav span {
+        display: none;
+    }
+
     .fl-table {
         display: block;
-        width: 100%;
+        width: 80%;
     }
-    .table-wrapper:before{
+    /* .table-wrapper:before{
         content: "Scroll horizontally >";
         display: block;
         text-align: right;
         font-size: 11px;
         color: var(--black_L);
         padding: 0 0 10px;
-    }
+    } */
     .fl-table thead, .fl-table tbody, .fl-table thead th {
         display: block;
     }
